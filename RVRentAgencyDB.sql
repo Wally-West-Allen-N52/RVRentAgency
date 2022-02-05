@@ -9,13 +9,13 @@ USE RVRentAgencyDB
 CREATE TABLE RentRV(
 	RentRVID int IDENTITY(1,1) primary key NOT NULL,
 	FindRV varchar(max) NOT NULL,
-	Price decimal(18,0) NOT NULL
+	Price float NOT NULL
 	);
 
 CREATE TABLE BuyRV(
 	BuyRVID int IDENTITY(1,1) primary key NOT NULL,
 	FindRV varchar(max) NOT NULL,
-	Price decimal(18,0) NOT NULL
+	Price float NOT NULL,
 );
 
 
