@@ -1,9 +1,11 @@
 package ca.com.crud.model;
 
 public class PlanTrip {
+	
 	private int Plan_tripID;
 	private String Beginning_from;
 	private String Arriving_at;
+	
 	private int BuyRVID;
 	private BuyRV buyRV;
 	private int RentRVID;
@@ -65,6 +67,4 @@ public class PlanTrip {
 	public void setContactUs(ContactUs contactUs) {
 		this.contactUs = contactUs;
 	}
-	
-	
 }

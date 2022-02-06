@@ -14,7 +14,12 @@
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="ca.com.crud.factory.ConnectionFactory"/>
-    <fullyQualifiedTypeName name="ca.com.crud.model.BuyRV"/>
-    <fullyQualifiedTypeName name="ca.com.crud.model.RentRV"/>
     <fullyQualifiedTypeName name="ca.com.crud.model.ContactUs"/>
+    <fullyQualifiedTypeName name="ca.com.crud.model.BuyRV"/>
+    <fullyQualifiedTypeName name="ca.com.crud.main.PlanTripTest"/>
+    <fullyQualifiedTypeName name="ca.com.crud.model.PlanTrip"/>
+    <fullyQualifiedTypeName name="ca.com.crud.dao.PlanTripDao"/>
+    <fullyQualifiedTypeName name="ca.com.crud.model.RentRV"/>
+    <fullyQualifiedTypeName name="ca.com.crud.dao.RentRVDao"/>
+    <fullyQualifiedTypeName name="ca.com.crud.dao.BuyRVDao"/>
 </qualifiedTypeNameHistroy>

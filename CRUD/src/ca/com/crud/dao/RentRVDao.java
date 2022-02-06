@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.com.crud.factory.ConnectionFactory;
-import ca.com.crud.model.ContactUs;
+import ca.com.crud.model.RentRV;
 
-public class ContactDao { 
-// Create CRUD methods
+public class RentRVDao {
+// Create CRUD methods 
 	//============================== Method save ======================================
-	public void save(ContactUs contact) {
+	public static void save(RentRV rentRV) {
 		// code to "query" here
-		String sql = "INSERT INTO ContactUs (Email, Phone, NewMessage )" + "VALUES(?, ?, ?)";
+		String sql = "INSERT INTO RentRV (FindRV, Price )" + "VALUES(?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -24,13 +24,8 @@ public class ContactDao {
 			conn = ConnectionFactory.createConnectionSQLServer();
 			
 			pstm = conn.prepareStatement(sql);
-			
-			pstm.setString(1, contact.getEmail());
-			
-			pstm.setString(2, contact.getPhone());
-			
-			pstm.setString(3, contact.getNewMessage());
-			
+			pstm.setString(1, rentRV.getFindRV());
+			pstm.setFloat(2, rentRV.getPrice());
 			pstm.execute();
 
 		} catch (Exception e) {
@@ -50,10 +45,10 @@ public class ContactDao {
 	}
 
 	// ============================= Method get contact list ==========================================
-	public List<ContactUs> getContactUs() {
-		String sql = "SELECT * FROM ContactUs";
+	public List<RentRV> getContactUs() {
+		String sql = "SELECT * FROM RentRV";
 		
-		List<ContactUs> contacts =  new ArrayList<ContactUs>();
+		List<RentRV> rents =  new ArrayList<RentRV>();
 		
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -66,13 +61,12 @@ public class ContactDao {
 			rset = pstm.executeQuery();
 			
 			while (rset.next()) {
-				ContactUs contact = new ContactUs();
-				
-				contact.setContactID(rset.getInt("ContactID"));
-				contact.setEmail(rset.getString("Email"));
-				contact.setPhone(rset.getString("Phone"));
-				contact.setNewMessage(rset.getString("NewMessage"));
-				contacts.add(contact);
+				RentRV rent = new RentRV();
+		
+				rent.setRentRVID(rset.getInt("RentRVID"));
+				rent.setFindRV(rset.getString("FindRV"));
+				rent.setPrice(rset.getFloat("Price"));
+				rents.add(rent);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,19 +85,19 @@ public class ContactDao {
 				e.printStackTrace();
 			}
 		}
-		return contacts;
+		return rents;
 	}
 	// =============================== Method remove ================================================
-	public void removeById(int ContactID) {
+	public void removeById(int RentRVID) {
 		// code to "query" here
-		String sql = "DELETE FROM ContactUs WHERE ContactID = ?";
+		String sql = "DELETE FROM RentRV WHERE RentRVID = ?";
 		Connection conn = null;
 		PreparedStatement pstm = null;
 
 		try {
 			conn = ConnectionFactory.createConnectionSQLServer();
 			pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, ContactID);
+			pstm.setInt(1, RentRVID);
 			pstm.execute();
 
 		} catch (Exception e) {
@@ -123,8 +117,8 @@ public class ContactDao {
 	}
 
 	// ========================== Method update =============================================
-	public void update(ContactUs contact) {
-		String sql = "UPDATE ContactUs SET Email = ?, Phone = ?, NewMessage = ? WHERE ContactID = ?";
+	public static void update(RentRV rentRV) {
+		String sql = "UPDATE RentRV SET FindRV = ?, Price = ? WHERE RentRVID = ?";
 
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -133,10 +127,9 @@ public class ContactDao {
 			conn = ConnectionFactory.createConnectionSQLServer();
 			pstm = conn.prepareStatement(sql);
 			
-			pstm.setString(1, contact.getEmail());
-			pstm.setString(2, contact.getPhone());
-			pstm.setString(3, contact.getNewMessage());
-			pstm.setInt(4, contact.getContactID());
+			pstm.setString(1, rentRV.getFindRV());
+			pstm.setFloat(2, rentRV.getPrice());
+			pstm.setInt(3, rentRV.getRentRVID());
 			pstm.execute();
 
 		} catch (Exception e) {

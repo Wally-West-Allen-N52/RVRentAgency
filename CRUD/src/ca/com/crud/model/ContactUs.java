@@ -10,8 +10,8 @@ public class ContactUs {
 		return ContactID;
 	}
 
-	public void setContactID(int ContactID) {
-		ContactID = ContactID;
+	public void setContactID(int contactID) {
+		ContactID = contactID;
 	}
 
 	public String getEmail() {

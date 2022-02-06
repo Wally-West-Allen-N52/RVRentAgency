@@ -28,10 +28,4 @@ public class RentRV {
 	public void setPrice(float price) {
 		Price = price;
 	}
-
-	@Override
-	public String toString() {
-		return "RentRV [RentRVID=" + RentRVID + ", FindRV=" + FindRV + ", Price=" + Price + "]";
-	}
-
 }
